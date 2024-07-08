@@ -10,16 +10,16 @@ function TaskCard({task}) {
       <div className=" text-slate-500 my-2">
         <p>{task.description}</p>
       </div>
-      <div className="flex justify-start items-center gap-[10px] my-[10px]">
-        <div className="bg-[#E3F8E5] text-[#333333] text-sm rounded-full px-[10px] py-1 text-center"
+      <div className="flex justify-start items-center gap-2 my-2">
+        <div className="bg-green-100 text-foreground text-sm rounded-full px-2 py-1 text-center"
         >
           {task.category}
         </div>
       </div>
       <div className="absolute right-1 top-1 inset-y-0 flex">
-        <div className="bg-[#F8F8F8] hover:bg-[#EFEFEF] w-[50px] h-[50px] p-[12px] rounded-full cursor-pointer"
+        <div className="flex items-center justify-center bg-slate-100 hover:bg-slate-200 w-12 h-12 p-2 rounded-full cursor-pointer"
         >
-          <ArrowRightIcon className="w-6 h-6 text-[#333333]" />
+          <ArrowRightIcon className="w-6 h-6 text-foreground" />
         </div>
       </div>
     </div>
