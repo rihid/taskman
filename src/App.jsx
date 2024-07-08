@@ -70,13 +70,13 @@ function App() {
     <>
       <Layout>
         <div className="max-w-full md:max-w-5xl mx-auto py-10">
-          <div className="text-4xl font-bold text-[#333333] pb-6">Task Management</div>
-          <div className="grid max-w-xs my-[20px] grid-cols-3 bg-[#FFFFFF] rounded-full">
+          <div className="text-4xl font-bold text-foreground pb-6">Task Management</div>
+          <div className="grid max-w-xs my-6 grid-cols-3 bg-background rounded-full">
             {TABMENU.map((tab, index) =>
               <button
                 key={index}
                 type="button"
-                className={`px-5 py-2 text-[14px] font-semibold text-[#333333]  rounded-full ${tabActive === tab.id ? 'bg-[#68E874] hover:bg-green-400 text-white' : 'hover:bg-gray-200'}`}
+                className={`px-5 py-2 text-sm font-semibold text-foreground  rounded-full ${tabActive === tab.id ? 'bg-green-500 hover:bg-green-600 text-background' : ''}`}
                 onClick={() => setTabActive(tab.id)}
               >
                 {tab.label}
