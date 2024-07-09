@@ -1,6 +1,29 @@
-# React + Vite
+# TaskMan
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Taskman is a task management application designed to help you organize and complete your tasks efficiently.
+
+## Features
+
+## Installation
+### Clone the Repository
+Clone the Taskman repository from GitHub to your local machine:
+
+```bash
+git clone https://github.com/rihid/taskman
+cd taskman
+```
+
+### Install Dependencies
+
+```bash
+# Using npm
+npm install
+```
+### Start Development Server
+
+```bash
+npm run dev
+```
 
 Currently, two official plugins are available:
 
