@@ -3,7 +3,7 @@ import Button from './button';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 const initialTask = {
   id: null,
-  title: '',
+  name: '',
   category: '',
   description: '',
 }
@@ -21,7 +21,7 @@ function AddTaskForm(props) {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!task.title || !task.category || !task.description) return;
+    if(!task.name || !task.category || !task.description) return;
     addTask(task)
     setTask(initialTask);
     setIsOpenForm(false)
@@ -51,8 +51,8 @@ function AddTaskForm(props) {
             <label htmlFor="title" className="block font-semibold text-lg mb-2">Title</label>
             <input
               type="text"
-              name="title"
-              value={task.title}
+              name="name"
+              value={task.name}
               onChange={handleChange}
               className="px-6 py-2 rounded-md bg-slate-50 border border-slate-200 w-full h-8"
             />
