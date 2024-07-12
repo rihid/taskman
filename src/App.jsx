@@ -16,7 +16,7 @@ const TABMENU = [
 const TASKS = [
   {
     id: 1,
-    name: 'Pakai Data Statis Dulu',
+    name: 'Pakai Data Statis Dulu 1',
     category: 'Daily',
     description: 'Ini adalah contoh data dummy dulu',
     schedulde_date: null,
@@ -26,7 +26,7 @@ const TASKS = [
   },
   {
     id: 2,
-    name: 'Pakai Data Statis Dulu',
+    name: 'Pakai Data Statis Dulu 2',
     category: 'Daily',
     description: 'Ini adalah contoh data dummy dulu',
     schedulde_date: null,
@@ -67,6 +67,9 @@ function App() {
       task
     ])
   }
+  const deleteTask = (id) => {
+    setTasks(tasks.filter(task => task.id !== id))
+  }
 
   return (
     <>
@@ -97,7 +100,11 @@ function App() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {tasks?.map((task, index) => 
-              <TaskCard key={index} task={task} />
+              <TaskCard 
+                key={index} 
+                task={task}
+                deleteTask={deleteTask}
+              />
             )}
           </div>
         </div>
