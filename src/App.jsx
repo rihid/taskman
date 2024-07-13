@@ -7,6 +7,7 @@ import TaskCard from "./components/task-card";
 import Button from "./components/button";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import AddTaskForm from "./components/add-task-form";
+import EditTaskForm from "./components/edit-task-form";
 
 const TABMENU = [
   { id: 0, label: 'Todo' },
@@ -42,6 +43,7 @@ function App() {
   const [isOpenEditForm, setIsOpenEditForm] = useState(false)
 
   const [tasks, setTasks] = useState(TASKS);
+  const [selectedTask, setSelectedTask] = useState({id: null, name: '', category: '', description: ''})
 
   // methods
   const handleOpenForm = (e) => {
@@ -49,6 +51,11 @@ function App() {
   }
   const handleCloseForm = (e) => {
     setIsOpenForm(false);
+    setIsOpenEditForm(false);
+  }
+  const handleShowEditForm = (task) => {
+    setSelectedTask(task)
+    setIsOpenEditForm(true)
   }
   const addTask = (task) => {
     task.id = tasks.length + 1;
@@ -56,10 +63,16 @@ function App() {
       ...tasks,
       task
     ])
+    setIsOpenForm(false)
   }
   const deleteTask = (id) => {
     setTasks(tasks.filter(task => task.id !== id))
   }
+  const editTask = (id, newTask) => {
+    setTasks(tasks.map((task) => task.id === id ? newTask : task))
+    setIsOpenEditForm(false)
+  }
+
 
   return (
     <>
@@ -94,6 +107,7 @@ function App() {
                 key={index} 
                 task={task}
                 deleteTask={deleteTask}
+                showEditForm={handleShowEditForm}
               />
             )}
           </div>
@@ -103,6 +117,14 @@ function App() {
           <AddTaskForm
             addTask={addTask}
             setIsOpenForm={setIsOpenForm}
+            onClose={handleCloseForm}
+          />
+        }
+        {/* form edit */}
+        {isOpenEditForm &&
+          <EditTaskForm
+            selectedTask={selectedTask}
+            editTask={editTask}
             onClose={handleCloseForm}
           />
         }

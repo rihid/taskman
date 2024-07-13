@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRightIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 function TaskCard(props) {
-  const { task, deleteTask } = props;
+  const { task, showEditForm, deleteTask } = props;
   return (
     <div className="relative flex flex-col justify-beetwen gap-2 rounded-xl bg-background px-8 py-6 border border-foreground/30 hover:border-foreground/60 hover:shadow-lg"
     >
@@ -23,10 +23,13 @@ function TaskCard(props) {
         </button>
       </div>
       <div className="absolute right-1 top-1 flex">
-        <div className="flex items-center justify-center bg-slate-100 hover:bg-slate-200 w-12 h-12 p-2 rounded-full cursor-pointer"
+        <button 
+          type='button'
+          onClick={() => showEditForm(task)}
+          className="flex items-center justify-center bg-slate-100 hover:bg-slate-200 w-12 h-12 p-2 rounded-full cursor-pointer"
         >
           <ArrowRightIcon className="w-6 h-6 text-foreground" />
-        </div>
+        </button>
       </div>
     </div>
   )
