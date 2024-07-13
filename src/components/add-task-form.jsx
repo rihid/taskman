@@ -8,7 +8,7 @@ const initialTask = {
   description: '',
 }
 function AddTaskForm(props) {
-  const { onClose, addTask, setIsOpenForm } = props;
+  const { onClose, addTask } = props;
   const [task, setTask] = useState(initialTask);
   // Methods
   const handleChange = (e) => {
@@ -23,7 +23,6 @@ function AddTaskForm(props) {
     if(!task.name || !task.category || !task.description) return;
     addTask(task)
     setTask(initialTask);
-    setIsOpenForm(false)
   }
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-slate-500/50">
@@ -86,4 +85,4 @@ function AddTaskForm(props) {
   )
 }
 
-export default AddTaskForm
+export default AddTaskForm;
