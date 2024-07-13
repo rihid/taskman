@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './button';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 const initialTask = {
@@ -9,7 +9,7 @@ const initialTask = {
 }
 function AddTaskForm(props) {
   const { onClose, addTask, setIsOpenForm } = props;
-  const [task, setTask] = React.useState(initialTask);
+  const [task, setTask] = useState(initialTask);
   console.log(task)
   // Methods
   const handleChange = (e) => {

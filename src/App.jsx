@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -13,6 +13,7 @@ const TABMENU = [
   { id: 1, label: 'Doing' },
   { id: 2, label: 'Done' },
 ];
+
 const TASKS = [
   {
     id: 1,
@@ -35,23 +36,12 @@ const TASKS = [
     status: 'Todo'
   }
 ]
-
-const initialTask = {
-  id: null,
-  name: '',
-  category: '',
-  description: '',
-  schedulde_date: null,
-  start_date: null,
-  end_date: null,
-  status: null
-}
-
 function App() {
-  const [tabActive, setTabActive] = React.useState(0);
-  const [isOpenForm, setIsOpenForm] = React.useState(false)
+  const [activeTab, setActiveTab] = useState(0);
+  const [isOpenForm, setIsOpenForm] = useState(false)
+  const [isOpenEditForm, setIsOpenEditForm] = useState(false)
 
-  const [tasks, setTasks] = React.useState(TASKS);
+  const [tasks, setTasks] = useState(TASKS);
 
   // methods
   const handleOpenForm = (e) => {
@@ -82,8 +72,8 @@ function App() {
                 <button
                   key={index}
                   type="button"
-                  className={`px-5 py-2 text-sm font-semibold text-foreground  rounded-full ${tabActive === tab.id ? 'bg-green-500 hover:bg-green-600 text-background' : ''}`}
-                  onClick={() => setTabActive(tab.id)}
+                  className={`px-5 py-2 text-sm font-semibold text-foreground  rounded-full ${activeTab === tab.id ? 'bg-green-500 hover:bg-green-600 text-background' : ''}`}
+                  onClick={() => setActiveTab(tab.id)}
                 >
                   {tab.label}
                 </button>
