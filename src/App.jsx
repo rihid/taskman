@@ -51,7 +51,7 @@ function App() {
     setIsOpenForm(false);
   }
   const addTask = (task) => {
-    task.id = task.length + 1;
+    task.id = tasks.length + 1;
     setTasks([
       ...tasks,
       task

@@ -10,7 +10,6 @@ const initialTask = {
 function AddTaskForm(props) {
   const { onClose, addTask, setIsOpenForm } = props;
   const [task, setTask] = useState(initialTask);
-  console.log(task)
   // Methods
   const handleChange = (e) => {
     const { name, value } = e.target
