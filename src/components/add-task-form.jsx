@@ -6,7 +6,7 @@ const initialTask = {
   name: '',
   category: '',
   description: '',
-  status: 'Todo',
+  status: 'todo',
 }
 function AddTaskForm({onClose, addTask}) {
   const [task, setTask] = useState(initialTask);
@@ -83,11 +83,12 @@ function AddTaskForm({onClose, addTask}) {
               id=""
               value={task.status}
               onChange={handleChange}
-              className="flex items-center w-full px-6 py-2 rounded-md bg-slate-50 border border-slate-200"
+              className="flex items-center w-full px-6 py-2 rounded-md bg-slate-50 border border-slate-200 text-slate-500"
+              disabled
             >
-              <option value="Todo">Todo</option>
-              <option value="Doing">Doing</option>
-              <option value="Done">Done</option>
+              <option value="todo">Todo</option>
+              <option value="doing">Doing</option>
+              <option value="done">Done</option>
             </select>
           </div>
           <div>

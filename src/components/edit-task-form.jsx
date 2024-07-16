@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import Button from './button';
 import { XMarkIcon } from '@heroicons/react/24/solid';
-const initialTask = {
-  id: null,
-  name: '',
-  category: '',
-  description: '',
-}
+
 function EditTaskForm({selectedTask, editTask, onClose}) {
   const [task, setTask] = useState(selectedTask);
   // Methods
@@ -82,9 +77,9 @@ function EditTaskForm({selectedTask, editTask, onClose}) {
               onChange={handleChange}
               className="flex items-center w-full px-6 py-2 rounded-md bg-slate-50 border border-slate-200"
             >
-              <option value="Todo">Todo</option>
-              <option value="Doing">Doing</option>
-              <option value="Done">Done</option>
+              <option value="todo">Todo</option>
+              <option value="doing">Doing</option>
+              <option value="done">Done</option>
             </select>
           </div>
           <div>
