@@ -1,7 +1,6 @@
 import React from 'react';
 
-function Button(props) {
-  const { type, color, size, onClick, disabled, label, children } = props;
+function Button({type, color, size, onClick, disabled, label, children}) {
   return (
     <button
       type={type || 'button'}

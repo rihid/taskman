@@ -7,8 +7,7 @@ const initialTask = {
   category: '',
   description: '',
 }
-function EditTaskForm(props) {
-  const { selectedTask, editTask, onClose } = props;
+function EditTaskForm({selectedTask, editTask, onClose}) {
   const [task, setTask] = useState(selectedTask);
   // Methods
   const handleChange = (e) => {

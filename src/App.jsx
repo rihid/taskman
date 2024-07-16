@@ -116,7 +116,6 @@ function App() {
         {isOpenForm && 
           <AddTaskForm
             addTask={addTask}
-            setIsOpenForm={setIsOpenForm}
             onClose={handleCloseForm}
           />
         }

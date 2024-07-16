@@ -8,8 +8,7 @@ const initialTask = {
   description: '',
   status: 'Todo',
 }
-function AddTaskForm(props) {
-  const { onClose, addTask } = props;
+function AddTaskForm({onClose, addTask}) {
   const [task, setTask] = useState(initialTask);
   // Methods
   const handleChange = (e) => {
