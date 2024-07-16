@@ -26,7 +26,7 @@ function EditTaskForm({selectedTask, editTask, onClose}) {
       <div className="fixed top-0 right-0 w-full md:w-[440px] h-full bg-background overflow-auto">
         <div className="flex justify-between border-b">
           <div className="p-6">
-            <div className="text-xl font-bold">Create Task</div>
+            <div className="text-xl font-bold">Edit Task</div>
           </div>
           <div className="p-6">
             <Button
