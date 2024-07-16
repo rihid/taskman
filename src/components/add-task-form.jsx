@@ -6,6 +6,7 @@ const initialTask = {
   name: '',
   category: '',
   description: '',
+  status: 'Todo',
 }
 function AddTaskForm(props) {
   const { onClose, addTask } = props;
@@ -20,7 +21,7 @@ function AddTaskForm(props) {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!task.name || !task.category || !task.description) return;
+    if (!task.name || !task.category || !task.description) return;
     addTask(task)
     setTask(initialTask);
   }
@@ -75,6 +76,20 @@ function AddTaskForm(props) {
               rows="3"
               className="px-6 py-2 rounded-md bg-slate-50 border border-slate-200 w-full"
             ></textarea>
+          </div>
+          <div>
+            <label htmlFor="status" className="block font-semibold text-lg mb-2">Status</label>
+            <select 
+              name="status"
+              id=""
+              value={task.status}
+              onChange={handleChange}
+              className="flex items-center w-full px-6 py-2 rounded-md bg-slate-50 border border-slate-200"
+            >
+              <option value="Todo">Todo</option>
+              <option value="Doing">Doing</option>
+              <option value="Done">Done</option>
+            </select>
           </div>
           <div>
             <Button type="submit" color="primary">Submit</Button>

@@ -34,7 +34,7 @@ const TASKS = [
     schedulde_date: null,
     start_date: null,
     end_date: null,
-    status: 'Todo'
+    status: 'Doing'
   }
 ]
 function App() {
