@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRightIcon, TrashIcon } from '@heroicons/react/24/outline';
 
-function TaskCard(task, showEditForm, deleteTask) {
+function TaskCard({task, showEditForm, deleteTask}) {
   return (
     <div className="relative flex flex-col justify-beetwen gap-2 rounded-xl bg-background px-8 py-6 border border-foreground/30 hover:border-foreground/60 hover:shadow-lg"
     >

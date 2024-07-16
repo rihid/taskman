@@ -102,7 +102,7 @@ function App() {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {tasks?.map((task, index) => 
+            {tasks.map((task, index) => 
               <TaskCard 
                 key={index} 
                 task={task}
