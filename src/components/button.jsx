@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Button({type, color, size, onClick, disabled, label, children}) {
+function Button({className, type, color, size, onClick, disabled, label, children}) {
   return (
     <button
       type={type || 'button'}
-      className={`w-full rounded-full whitespace-nowrap
+      className={`${className} w-full rounded-full whitespace-nowrap
       ${size === 'icon' ? 'p-1' : 'px-6 py-2 '}
 
       ${color === 'primary' ? 'bg-green-500 hover:bg-green-600 border rounded-full text-background' : ''}

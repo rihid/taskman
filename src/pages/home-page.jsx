@@ -6,7 +6,6 @@ import { PlusIcon } from "@heroicons/react/24/solid";
 import AddTaskForm from "../components/add-task-form";
 import EditTaskForm from "../components/edit-task-form";
 import TabMenu from "../components/tab-menu";
-import "../App.css"
 
 const TABMENU = [
   { id: 0, label: 'Todo' },
