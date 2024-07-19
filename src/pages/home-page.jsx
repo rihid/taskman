@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
 import TaskCard from "../components/task-card";
 import Button from "../components/button";
@@ -20,9 +20,6 @@ const TASKS = [
     name: 'Pakai Data Statis Dulu 1',
     category: 'Daily',
     description: 'Ini adalah contoh data dummy dulu',
-    schedulde_date: null,
-    start_date: null,
-    end_date: null,
     status: 'todo'
   },
   {
@@ -30,9 +27,6 @@ const TASKS = [
     name: 'Pakai Data Statis Dulu 2',
     category: 'Daily',
     description: 'Ini adalah contoh data dummy dulu',
-    schedulde_date: null,
-    start_date: null,
-    end_date: null,
     status: 'doing'
   }
 ]
@@ -57,22 +51,35 @@ function HomePage() {
     setSelectedTask(task)
     setIsOpenEditForm(true)
   }
+
   const addTask = (task) => {
     task.id = tasks.length + 1;
-    setTasks([
-      ...tasks,
-      task
-    ])
-    setIsOpenForm(false)
+    const addedTask = [...tasks, task]
+    setTasks(addedTask);
+    localStorage.setItem('taskData', JSON.stringify(addedTask));
+    setIsOpenForm(false);
   }
   const deleteTask = (id) => {
-    setTasks(tasks.filter(task => task.id !== id))
+    const deletedTask = tasks.filter(task => task.id !== id);
+    setTasks(deletedTask);
+    localStorage.setItem('taskData', JSON.stringify(deletedTask))
   }
   const editTask = (id, newTask) => {
-    setTasks(tasks.map((task) => task.id === id ? newTask : task))
-    setIsOpenEditForm(false)
+    const editedTask = tasks.map((task) => task.id === id ? newTask : task);
+    setTasks(editedTask);
+    localStorage.setItem('taskData', JSON.stringify(editedTask));
+    setIsOpenEditForm(false);
   }
 
+  // 
+  useEffect(() => {
+    const storedTasks = JSON.parse(localStorage.getItem('taskData'));
+    if(storedTasks) {
+      setTasks(storedTasks);
+    } else {
+      setTasks(TASKS);
+    }
+  }, [])
 
   return (
     <>
@@ -93,7 +100,7 @@ function HomePage() {
                 <input
                   type="text"
                   placeholder="Cari..."
-                  onChange={(e) => {setSearch(e.target.value)}}
+                  onChange={(e) => { setSearch(e.target.value) }}
                   className="h-10 pl-12 pr-6 py-2 rounded-lg bg-white border border-slate-200 w-full"
                 />
               </div>
@@ -112,9 +119,9 @@ function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {tasks.filter(task => {
                 // task.status === 'todo'
-                if(search === '') {
+                if (search === '') {
                   return task.status === 'todo';
-                } else if(task.name?.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
+                } else if (task.name?.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
                   return task.status === 'todo';
                 }
               }).map(task =>
@@ -131,9 +138,9 @@ function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {tasks.filter(task => {
                 // task.status === 'doing'
-                if(search === '') {
+                if (search === '') {
                   return task.status === 'doing';
-                } else if(task.name?.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
+                } else if (task.name?.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
                   return task.status === 'doing';
                 }
               }).map(task =>
@@ -150,9 +157,9 @@ function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {tasks.filter(task => {
                 // task.status === 'done'
-                if(search === '') {
+                if (search === '') {
                   return task.status === 'done';
-                } else if(task.name?.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
+                } else if (task.name?.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
                   return task.status === 'done';
                 }
               }).map(task =>
