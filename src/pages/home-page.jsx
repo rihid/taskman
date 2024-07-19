@@ -6,6 +6,7 @@ import { PlusIcon } from "@heroicons/react/24/solid";
 import AddTaskForm from "../components/add-task-form";
 import EditTaskForm from "../components/edit-task-form";
 import TabMenu from "../components/tab-menu";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const TABMENU = [
   { id: 0, label: 'Todo' },
@@ -42,6 +43,7 @@ function HomePage() {
 
   const [tasks, setTasks] = useState(TASKS);
   const [selectedTask, setSelectedTask] = useState({ id: null, name: '', category: '', description: '' })
+  const [search, setSearch] = useState('')
 
   // methods
   const handleOpenForm = (e) => {
@@ -83,18 +85,39 @@ function HomePage() {
               activeTab={activeTab}
               setActiveTab={setActiveTab}
             />
-            <div className="">
-              <Button
-                color="primary"
-                onClick={handleOpenForm}
-              >
-                <PlusIcon className="w-6 h-6" />
-              </Button>
+            <div className="flex items-center justify-center gap-4">
+              <div className="relative grow">
+                <div className="absolute left-0 inset-y-0 flex items-center pl-[14px]">
+                  <MagnifyingGlassIcon className="h-6 w-6 text-foreground/80" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Cari..."
+                  onChange={(e) => {setSearch(e.target.value)}}
+                  className="h-10 pl-12 pr-6 py-2 rounded-lg bg-white border border-slate-200 w-full"
+                />
+              </div>
+              <div className="grow-0">
+                <Button
+                  color="primary"
+                  onClick={handleOpenForm}
+                >
+                  <PlusIcon className="w-6 h-6" />
+                </Button>
+
+              </div>
             </div>
           </div>
           {activeTab === 0 &&
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {tasks.filter(task => task.status === 'todo').map(task =>
+              {tasks.filter(task => {
+                // task.status === 'todo'
+                if(search === '') {
+                  return task.status === 'todo';
+                } else if(task.name?.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
+                  return task.status === 'todo';
+                }
+              }).map(task =>
                 <TaskCard
                   key={task.id}
                   task={task}
@@ -106,7 +129,14 @@ function HomePage() {
           }
           {activeTab === 1 &&
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {tasks.filter(task => task.status === 'doing').map(task =>
+              {tasks.filter(task => {
+                // task.status === 'doing'
+                if(search === '') {
+                  return task.status === 'doing';
+                } else if(task.name?.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
+                  return task.status === 'doing';
+                }
+              }).map(task =>
                 <TaskCard
                   key={task.id}
                   task={task}
@@ -118,7 +148,14 @@ function HomePage() {
           }
           {activeTab === 2 &&
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {tasks.filter(task => task.status === 'done').map(task =>
+              {tasks.filter(task => {
+                // task.status === 'done'
+                if(search === '') {
+                  return task.status === 'done';
+                } else if(task.name?.toLocaleLowerCase().includes(search.toLocaleLowerCase())) {
+                  return task.status === 'done';
+                }
+              }).map(task =>
                 <TaskCard
                   key={task.id}
                   task={task}

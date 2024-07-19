@@ -34,7 +34,7 @@ function LoginPage() {
               color="primary"
               className="rounded-lg"
             >
-              Submit
+              Login
             </Button>
           </div>
         </form>
