@@ -2,7 +2,13 @@
 
 Taskman is a task management application designed to help you organize and complete your tasks efficiently.
 
+The Taskman application is deployed and can be accessed at: https://taskman-alpha.vercel.app
+
 ## Features
+- Authentication
+- Add, edit, and delete tasks
+- Auto-sort tasks by status
+- Search tasks by title/name
 
 ## Installation
 ### Clone the Repository
