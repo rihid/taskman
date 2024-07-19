@@ -37,7 +37,7 @@ function HomePage() {
 
   const [tasks, setTasks] = useState(TASKS);
   const [selectedTask, setSelectedTask] = useState({ id: null, name: '', category: '', description: '' })
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
 
   // methods
   const handleOpenForm = (e) => {

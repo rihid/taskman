@@ -1,6 +1,8 @@
 import React from 'react';
+import { useAuth } from '../auth/auth-provider';
 
 function Header() {
+  const auth = useAuth();
   return (
     <nav className="top-0 w-full bg-background">
       <div className="max-w-full md:max-w-5xl mx-auto">
@@ -14,6 +16,7 @@ function Header() {
             </a>
           </div>
           <div
+            onClick={() => auth.logOut()}
             className="bg-green-500 hover:bg-green-600 font-bold text-background my-2 px-10 py-2 flex items-center cursor-pointer rounded-3xl"
           >
             <span>Keluar</span>

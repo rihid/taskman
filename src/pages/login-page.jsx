@@ -1,7 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '../components/button';
+import { useAuth } from '../auth/auth-provider';
 
 function LoginPage() {
+  const [loginData, setLoginData] = useState({username: 'emilys', password: 'emilyspass'});
+  const [isLoading, setIsLoading] = useState(false);
+  const auth = useAuth()
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData({
+      ...loginData,
+      [name]: value
+    })
+  }
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    if( loginData.username !== '' && loginData.password !== '') {
+      setIsLoading(true)
+      await auth.fetchLogin(loginData);
+      setIsLoading(false)
+      return;
+    }
+    alert("Username atau Password salah!");
+  }
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="w-full max-w-sm bg-background p-4 rounded-lg border border-foreground/30">
@@ -9,22 +31,25 @@ function LoginPage() {
         <form
           action=""
           className="flex flex-col gap-4 mb-4"
+          onSubmit={handleSubmit}
         >
           <div>
-            <label htmlFor="title" className="block text-sm mb-2">Username</label>
+            <label htmlFor="username" className="block text-sm mb-2">Username</label>
             <input
               type="text"
-              name="name"
-              // value=""
+              name="username"
+              value={loginData.username}
+              onChange={handleChange}
               className="px-6 py-2 rounded-md bg-slate-50 border border-slate-200 w-full h-8"
             />
           </div>
           <div>
-            <label htmlFor="title" className="block text-sm mb-2">Username</label>
+            <label htmlFor="password" className="block text-sm mb-2">Password</label>
             <input
-              type="text"
-              name="name"
-              // value=""
+              type="password"
+              name="password"
+              value={loginData.password}
+              onChange={handleChange}
               className="px-6 py-2 rounded-md bg-slate-50 border border-slate-200 w-full h-8"
             />
           </div>
@@ -33,8 +58,9 @@ function LoginPage() {
               type="submit" 
               color="primary"
               className="rounded-lg"
+              disabled={isLoading}
             >
-              Login
+              {isLoading ? 'Loading...' : 'Login'}
             </Button>
           </div>
         </form>
