@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Button from './button';
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import { XMarkIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
+import { Tooltip } from 'react-tooltip';
 const initialTask = {
   id: null,
   name: '',
@@ -8,7 +9,7 @@ const initialTask = {
   description: '',
   status: 'todo',
 }
-function AddTaskForm({onClose, addTask}) {
+function AddTaskForm({ onClose, addTask }) {
   const [task, setTask] = useState(initialTask);
   // Methods
   const handleChange = (e) => {
@@ -52,6 +53,7 @@ function AddTaskForm({onClose, addTask}) {
               name="name"
               value={task.name}
               onChange={handleChange}
+              required
               className="px-6 py-2 rounded-md bg-slate-50 border border-slate-200 w-full h-8"
             />
           </div>
@@ -62,6 +64,7 @@ function AddTaskForm({onClose, addTask}) {
               name="category"
               value={task.category}
               onChange={handleChange}
+              required
               className="px-6 py-2 rounded-md bg-slate-50 border border-slate-200 w-full h-8"
             />
           </div>
@@ -77,8 +80,19 @@ function AddTaskForm({onClose, addTask}) {
             ></textarea>
           </div>
           <div>
-            <label htmlFor="status" className="block font-semibold text-lg mb-2">Status</label>
-            <select 
+            <label htmlFor="status" className="block font-semibold text-lg mb-2">
+              <span className="flex items-center gap-2">
+                <span>Status</span>
+                <InformationCircleIcon data-tooltip-id='status-info' className="w-5 h-5 cursor-pointer" />
+              </span>
+              <Tooltip
+                id="status-info"
+                place="top"
+                variant="warning"
+                content="Status hanya bisa ditambahkan di menu edit"
+              />
+            </label>
+            <select
               name="status"
               id=""
               value={task.status}
