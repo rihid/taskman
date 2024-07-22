@@ -44,6 +44,7 @@ function EditTaskForm({selectedTask, editTask, onClose}) {
               name="name"
               value={task.name}
               onChange={handleChange}
+              required
               className="px-6 py-2 rounded-md bg-slate-50 border border-slate-200 w-full h-8"
             />
           </div>
@@ -54,6 +55,7 @@ function EditTaskForm({selectedTask, editTask, onClose}) {
               name="category"
               value={task.category}
               onChange={handleChange}
+              required
               className="px-6 py-2 rounded-md bg-slate-50 border border-slate-200 w-full h-8"
             />
           </div>

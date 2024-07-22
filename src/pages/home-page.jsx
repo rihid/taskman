@@ -92,7 +92,7 @@ function HomePage() {
               activeTab={activeTab}
               setActiveTab={setActiveTab}
             />
-            <div className="flex items-center w-full gap-4">
+            <div className="flex items-center w-full md:w-auto gap-4">
               <div className="relative grow">
                 <div className="absolute left-0 inset-y-0 flex items-center pl-[14px]">
                   <MagnifyingGlassIcon className="h-6 w-6 text-foreground/80" />
