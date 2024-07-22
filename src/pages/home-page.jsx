@@ -84,15 +84,15 @@ function HomePage() {
   return (
     <>
       <Layout>
-        <div className="max-w-full md:max-w-5xl mx-auto py-10">
-          <div className="text-4xl font-bold text-foreground pb-6">Task Management</div>
+        <div className="max-w-full px-4 md:max-w-5xl mx-auto py-10">
+          <div className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground pb-6">Task Management</div>
           <div className="flex flex-col gap-4 md:flex-row items-center justify-between my-6">
             <TabMenu
               dataMenu={TABMENU}
               activeTab={activeTab}
               setActiveTab={setActiveTab}
             />
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center w-full gap-4">
               <div className="relative grow">
                 <div className="absolute left-0 inset-y-0 flex items-center pl-[14px]">
                   <MagnifyingGlassIcon className="h-6 w-6 text-foreground/80" />
@@ -106,6 +106,7 @@ function HomePage() {
               </div>
               <div className="grow-0">
                 <Button
+                  size="icon"
                   color="primary"
                   onClick={handleOpenForm}
                 >
@@ -116,7 +117,7 @@ function HomePage() {
             </div>
           </div>
           {activeTab === 0 &&
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {tasks.filter(task => {
                 // task.status === 'todo'
                 if (search === '') {
@@ -135,7 +136,7 @@ function HomePage() {
             </div>
           }
           {activeTab === 1 &&
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {tasks.filter(task => {
                 // task.status === 'doing'
                 if (search === '') {
@@ -154,7 +155,7 @@ function HomePage() {
             </div>
           }
           {activeTab === 2 &&
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {tasks.filter(task => {
                 // task.status === 'done'
                 if (search === '') {

@@ -4,10 +4,10 @@ function Button({className, type, color, size, onClick, disabled, label, childre
   return (
     <button
       type={type || 'button'}
-      className={`${className} w-full rounded-full whitespace-nowrap
-      ${size === 'icon' ? 'p-1' : 'px-6 py-2 '}
+      className={`${className} w-full whitespace-nowrap font-medium text-sm lg:text-base
+      ${size === 'icon' ? 'p-2 rounded-full' : 'px-6 py-2 rounded-xl'}
 
-      ${color === 'primary' ? 'bg-green-500 hover:bg-green-600 border rounded-xl text-background' : ''}
+      ${color === 'primary' ? 'bg-green-500 hover:bg-green-600 border text-background' : ''}
       ${color === 'secondary' ? 'bg-slate-200 hover:bg-slate-300 text-foreground' : ''}
       ${color === 'danger' ? 'bg-red-500 hover:bg-red-600 border-red-500 rounded-full text-white': ''}
     `}

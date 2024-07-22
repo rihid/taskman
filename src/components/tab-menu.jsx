@@ -2,7 +2,7 @@ import React from 'react';
 
 function TabMenu({dataMenu, activeTab, setActiveTab}) {
   return (
-    <div className="grid max-w-xs grid-cols-3 bg-background rounded-lg">
+    <div className="grid w-full md:max-w-xs grid-cols-3 bg-background rounded-lg">
       {dataMenu.map((tab, index) =>
         <button
           key={index}
