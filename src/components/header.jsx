@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuth } from '../auth/auth-provider';
+import Button from './button';
 
 function Header() {
   const auth = useAuth();
@@ -15,11 +16,13 @@ function Header() {
               <span>TaskMan</span>
             </a>
           </div>
-          <div
-            onClick={() => auth.logOut()}
-            className="bg-green-500 hover:bg-green-600 font-bold text-background my-2 px-10 py-2 flex items-center cursor-pointer rounded-3xl"
-          >
-            <span>Keluar</span>
+          <div className="my-2">
+            <Button
+              type='button'
+              label="Logout"
+              color="primary"
+              onClick={() => auth.logOut()}
+            />
           </div>
         </div>
       </div>
