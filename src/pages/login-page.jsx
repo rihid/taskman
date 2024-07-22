@@ -22,7 +22,6 @@ function LoginPage() {
       setIsLoading(false)
       return;
     }
-    alert("Username atau Password salah!");
   }
   return (
     <div className="w-full h-screen flex items-center justify-center">

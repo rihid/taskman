@@ -15,16 +15,16 @@ const AuthProvider = ({ children }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       })
-      const res = await response.json()
-      console.log(res)
-      if (res.username) {
+      if (response.ok) {
+        const res = await response.json()
         setUser(res.username);
         setToken(res.token);
         localStorage.setItem("auth", res.token);
         navigate("/");
         return;
+      } else {
+        alert('username atau password salah');
       }
-      throw new Error(res.message)
     } catch (err) {
       console.log(err)
     }
