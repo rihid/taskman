@@ -14,7 +14,7 @@ function Header() {
           <div className="flex items-center justify-start gap-2">
             <a 
               href="#"
-              className="flex items-center justify-center p-2 rounded-full bg-green-500"
+              className="flex items-center justify-center p-2 rounded-full bg-gradient-to-r from-lime-500 to-green-500"
             >
               <RocketLaunchIcon className="w-5 h-5 text-background font-medium" />
             </a>
